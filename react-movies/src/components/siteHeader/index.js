@@ -37,8 +37,8 @@ const SiteHeader = ({ history }) => {
 
   const tvOptions = [
     { label: "New", path: "/tv/current" },
-    { label: "Popular", path: "/tv/popular" },
     { label: "Top Rated", path: "/tv/top_rated" },
+    { label: "Popular", path: "/tv/popular" },
   ]
 
   const handleMenuSelect = (pageURL) => {
@@ -112,6 +112,20 @@ const SiteHeader = ({ history }) => {
                 ))}
               </>
             )}
+            <Typography variant="h6">
+            | TV |
+          </Typography>
+          <>
+                {tvOptions.map((opt) => (
+                  <Button
+                    key={opt.label}
+                    color="inherit"
+                    onClick={() => handleMenuSelect(opt.path)}
+                  >
+                    {opt.label}
+                  </Button>
+                ))}
+              </>
             <Button sx={{
         color: "rgb(255,255,255)"
       }} ><Profile></Profile></Button>
