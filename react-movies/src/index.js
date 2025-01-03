@@ -9,6 +9,7 @@ import MustWatchPage from "./pages/mustWatchPage";
 import MovieReviewPage from "./pages/movieReviewPage";
 import ActorPage from "./pages/actorDetailsPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
+import PopularMoviesPage from "./pages/popularMoviesPags";
 import SiteHeader from "./components/siteHeader";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={ <Navigate to="/" /> } />
           <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
+          <Route path="/movies/popular" element={<PopularMoviesPage />} />
         </Routes>
         </MoviesContextProvider>
       </BrowserRouter>

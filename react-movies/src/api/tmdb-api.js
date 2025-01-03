@@ -195,6 +195,23 @@ export const getMovie = (args) => {
    });
   };
 
+  export const getPopularMovies = () => {
+    return fetch(
+      "https://api.themoviedb.org/3/movie/popular?api_key=" +
+        process.env.REACT_APP_TMDB_KEY +
+        "&language=en-US&page=1"
+    ).then((response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          throw new Error(error.status_message || "Something went wrong");
+        });
+      }
+      return response.json();
+    })
+    .catch((error) => {
+        throw error
+    });
+  };
 
   ///Actors
   
@@ -272,3 +289,148 @@ export const getMovie = (args) => {
       throw error
    });
   };
+
+  //TV
+
+  export const getShows = () => {
+    return fetch(
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
+    ).then((response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          throw new Error(error.status_message || "Something went wrong");
+        });
+      }
+      return response.json();
+    })
+    .catch((error) => {
+        throw error
+    });
+  };
+
+  export const getShow = (args) => {
+    //console.log(args)
+    const [, idPart] = args.queryKey;
+    const { id } = idPart;
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    ).then((response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          throw new Error(error.status_message || "Something went wrong");
+        });
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error
+   });
+  };
+    
+    export const getTVGenres = () => {
+      return fetch(
+        "https://api.themoviedb.org/3/genre/tv/list?api_key=" +
+          process.env.REACT_APP_TMDB_KEY +
+          "&language=en-US"
+      ).then( (response) => {
+        if (!response.ok) {
+          return response.json().then((error) => {
+            throw new Error(error.status_message || "Something went wrong");
+          });
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        throw error
+     });
+    };
+    
+    export const getShowImages = ({ queryKey }) => {
+      const [, idPart] = queryKey;
+      const { id } = idPart;
+      return fetch(
+        `https://api.themoviedb.org/3/tv/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
+      ).then( (response) => {
+        if (!response.ok) {
+          return response.json().then((error) => {
+            throw new Error(error.status_message || "Something went wrong");
+          });
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        throw error
+     });
+    };
+  
+    export const getShowReviews = ({ queryKey }) => {
+      const [, idPart] = queryKey;
+      const { id } = idPart;
+      return fetch(
+        `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${process.env.REACT_APP_TMDB_KEY}`
+      ).then( (response) => {
+        if (!response.ok) {
+          return response.json().then((error) => {
+            throw new Error(error.status_message || "Something went wrong");
+          });
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        throw error
+     });
+    };
+  
+    export const getCurrentShows = () => {
+      return fetch(
+        "https://api.themoviedb.org/3/tv/on_the_air?api_key=" +
+          process.env.REACT_APP_TMDB_KEY +
+          "&language=en-US&page=1"
+      ).then((response) => {
+        if (!response.ok) {
+          return response.json().then((error) => {
+            throw new Error(error.status_message || "Something went wrong");
+          });
+        }
+        return response.json();
+      })
+      .catch((error) => {
+          throw error
+      });
+    };
+  
+    export const getPopularShows = () => {
+      return fetch(
+        "https://api.themoviedb.org/3/tv/popular?api_key=" +
+          process.env.REACT_APP_TMDB_KEY +
+          "&language=en-US&page=1"
+      ).then((response) => {
+        if (!response.ok) {
+          return response.json().then((error) => {
+            throw new Error(error.status_message || "Something went wrong");
+          });
+        }
+        return response.json();
+      })
+      .catch((error) => {
+          throw error
+      });
+    };
+  
+    export const getTopRatedShows = () => {
+      return fetch(
+        "https://api.themoviedb.org/3/tv/top_rated?api_key=" +
+          process.env.REACT_APP_TMDB_KEY +
+          "&language=en-US&page=1"
+      ).then((response) => {
+        if (!response.ok) {
+          return response.json().then((error) => {
+            throw new Error(error.status_message || "Something went wrong");
+          });
+        }
+        return response.json();
+      })
+      .catch((error) => {
+          throw error
+      });
+    };

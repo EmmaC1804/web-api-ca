@@ -35,6 +35,12 @@ const SiteHeader = ({ history }) => {
     { label: "Popular", path: "/movies/popular" },
   ];
 
+  const tvOptions = [
+    { label: "New", path: "/tv/current" },
+    { label: "Popular", path: "/tv/popular" },
+    { label: "Top Rated", path: "/tv/top_rated" },
+  ]
+
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL, { replace: true });
   };
@@ -53,6 +59,9 @@ const SiteHeader = ({ history }) => {
         <Toolbar>
           <Typography variant="h4" sx={{ flexGrow: 1 }}>
             TMDB Client
+          </Typography>
+          <Typography variant="h6">
+            | Movies |
           </Typography>
             {isMobile ? (
               <>
