@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import Profile from '@mui/icons-material/AccountBox';
 import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
@@ -31,6 +32,7 @@ const SiteHeader = ({ history }) => {
     { label: "Trending", path: "/movies/trending/today" },
     { label: "Top Rated", path: "/movies/top_rated" },
     { label: "New", path: "/movies/now_playing" },
+    { label: "Popular", path: "/movies/popular" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -51,9 +53,6 @@ const SiteHeader = ({ history }) => {
         <Toolbar>
           <Typography variant="h4" sx={{ flexGrow: 1 }}>
             TMDB Client
-          </Typography>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            All you ever wanted to know about Movies!
           </Typography>
             {isMobile ? (
               <>
@@ -104,6 +103,9 @@ const SiteHeader = ({ history }) => {
                 ))}
               </>
             )}
+            <Button sx={{
+        color: "rgb(255,255,255)"
+      }} ><Profile></Profile></Button>
         </Toolbar>
       </AppBar>
       <Offset />
