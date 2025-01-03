@@ -64,6 +64,14 @@ export default function ShowCard({show, action}) {
             </Typography>
           </Grid>
         </Grid>
+        <Grid container>
+          <Grid size={{xs: 12}}>
+            <Typography variant="h6" component="p">
+              <StarRateIcon fontSize="small" />
+              {show.vote_average}
+            </Typography>
+          </Grid>
+        </Grid>
       </CardContent>
       <CardActions disableSpacing>
       

@@ -7,6 +7,8 @@ import TrendingPage from "./pages/trendingTodayPage";
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage";
 import MustWatchPage from "./pages/mustWatchPage";
 import MovieReviewPage from "./pages/movieReviewPage";
+import CurrentShowsPage from "./pages/currentShowsPage";
+import TopRatedShowsPage from "./pages/topRatedShowsPage";
 import ActorPage from "./pages/actorDetailsPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import PopularMoviesPage from "./pages/popularMoviesPags";
@@ -50,6 +52,8 @@ const App = () => {
           <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
           <Route path="/movies/popular" element={<PopularMoviesPage />} />
           <Route path="/tv/popular" element={<PopularShowsPage />} />
+          <Route path="/tv/current" element={<CurrentShowsPage />} />
+          <Route path="/tv/top_rated" element={<TopRatedShowsPage />} />
         </Routes>
         </MoviesContextProvider>
       </BrowserRouter>

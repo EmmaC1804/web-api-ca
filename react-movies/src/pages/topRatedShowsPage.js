@@ -1,5 +1,5 @@
 import React from "react";
-import { getShows} from "../api/tmdb-api";
+import { getTopRatedShows} from "../api/tmdb-api";
 import PageTemplate from '../components/templateShowListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -8,10 +8,10 @@ import Grid from "@mui/material/Grid2";
 import { Pagination } from "@mui/material";
 import Button from "@mui/material/Button";
 
-const PopularShowsPage = (props) => {
+const TopRatedShowsPage = (props) => {
 
     //May have been cause of loading error - both had 'popular' in query
-  const {  data, error, isLoading, isError }  = useQuery('liked', getShows)
+  const {  data, error, isLoading, isError }  = useQuery('top', getTopRatedShows)
 
   if (isLoading) {
     return <Spinner />
@@ -31,7 +31,7 @@ const PopularShowsPage = (props) => {
   return (
   
     <PageTemplate
-      title="Popular"
+      title="Top Rated"
       shows={shows}
       action={(show) => {
         return <AddToFavoritesIcon show={show} />
@@ -40,4 +40,4 @@ const PopularShowsPage = (props) => {
 );
 
 };
-export default PopularShowsPage;
+export default TopRatedShowsPage;

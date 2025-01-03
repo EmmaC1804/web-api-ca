@@ -10,6 +10,7 @@ function MovieListPageTemplate({ movies, title, action }) {
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
 
+  //Debugged using chatGPT - when switching between shows and films loading error
   let displayedMovies = movies
   .filter((m) => m && m.title && m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1)
   .filter((m) => genreId > 0 ? m.genre_ids?.includes(genreId) : true);
