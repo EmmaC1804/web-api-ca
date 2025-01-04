@@ -20,6 +20,10 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import TopRatedPage from "./pages/topRatedPage";
 import NowPlayingPage from "./pages/nowPlayingPage";
+import LoginPage from "./pages/loginPage";
+import AuthContextProvider from "./contexts/authContext";
+import ProtectedRoutes from "./protectedRoutes";
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,6 +39,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <AuthContextProvider>
         <SiteHeader />
         <MoviesContextProvider>
         <Routes>
@@ -54,8 +59,10 @@ const App = () => {
           <Route path="/tv/popular" element={<PopularShowsPage />} />
           <Route path="/tv/current" element={<CurrentShowsPage />} />
           <Route path="/tv/top_rated" element={<TopRatedShowsPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
         </MoviesContextProvider>
+        </AuthContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

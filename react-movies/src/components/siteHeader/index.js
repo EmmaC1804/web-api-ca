@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -12,12 +12,14 @@ import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { AuthContext } from "../../contexts/authContext";
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = ({ history }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const context = useContext(AuthContext);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -39,6 +41,7 @@ const SiteHeader = ({ history }) => {
     { label: "New", path: "/tv/current" },
     { label: "Top Rated", path: "/tv/top_rated" },
     { label: "Popular", path: "/tv/popular" },
+    { label: "Login", path: "/login" },
   ]
 
   const handleMenuSelect = (pageURL) => {
@@ -51,89 +54,104 @@ const SiteHeader = ({ history }) => {
 
   return (
     <>
-      <AppBar position="fixed" 
-      sx={{
-        backgroundColor: "rgb(217,80,17)"
-      }} 
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: "rgb(217,80,17)",
+        }}
       >
         <Toolbar>
           <Typography variant="h4" sx={{ flexGrow: 1 }}>
             TMDB Client
           </Typography>
-          <Typography variant="h6">
-            | Movies |
-          </Typography>
-            {isMobile ? (
-              <>
-                <IconButton
-                  aria-label="menu"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={open}
-                  onClose={() => setAnchorEl(null)}
-                >
-                  {menuOptions.map((opt) => (
-                    <MenuItem
-                      key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
-                    >
-                      {opt.label}
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </>
-            ) : (
-              <>
+          <Typography variant="h6">| Movies |</Typography>
+          {isMobile ? (
+            <>
+              <IconButton
+                aria-label="menu"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={open}
+                onClose={() => setAnchorEl(null)}
+              >
                 {menuOptions.map((opt) => (
-                  <Button
+                  <MenuItem
                     key={opt.label}
-                    color="inherit"
                     onClick={() => handleMenuSelect(opt.path)}
                   >
                     {opt.label}
-                  </Button>
+                  </MenuItem>
                 ))}
-              </>
-            )}
-            <Typography variant="h6">
-            | TV |
-          </Typography>
+              </Menu>
+            </>
+          ) : (
+            <>
+              {menuOptions.map((opt) => (
+                <Button
+                  key={opt.label}
+                  color="inherit"
+                  onClick={() => handleMenuSelect(opt.path)}
+                >
+                  {opt.label}
+                </Button>
+              ))}
+            </>
+          )}
+          <Typography variant="h6">| TV |</Typography>
           <>
-                {tvOptions.map((opt) => (
-                  <Button
-                    key={opt.label}
-                    color="inherit"
-                    onClick={() => handleMenuSelect(opt.path)}
-                  >
-                    {opt.label}
-                  </Button>
-                ))}
-              </>
-            <Button sx={{
-        color: "rgb(255,255,255)"
-      }} ><Profile></Profile></Button>
+            {tvOptions.map((opt) => (
+              <Button
+                key={opt.label}
+                color="inherit"
+                onClick={() => handleMenuSelect(opt.path)}
+              >
+                {opt.label}
+              </Button>
+            ))}
+          </>
+          <Button
+            sx={{
+              color: "rgb(255,255,255)",
+            }}
+          >
+            <Profile></Profile>
+          </Button>
         </Toolbar>
       </AppBar>
       <Offset />
+      {/* Authentication Section */}
+      <div style={{ margin: "20px", textAlign: "center" }}>
+        {context.isAuthenticated ? (
+          <p>
+            Welcome {context.userName}!{" "}
+            <button onClick={() => context.signout()}>Sign out</button>
+          </p>
+        ) : (
+          <p>
+            You are not logged in{" "}
+            <button onClick={() => navigate("/login")}>Login</button>
+          </p>
+        )}
+      </div>
     </>
   );
-};
+};  
 
 export default SiteHeader;
