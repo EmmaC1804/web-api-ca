@@ -11,7 +11,9 @@ const ProtectedRoutes = () => {
   return context.isAuthenticated === true ? (
     <Outlet /> 
   ) : (
-    <Typography variant="h5">Login to access page content</Typography>
+    
+    <Typography  
+       variant="h5">Login to access page content</Typography>
   );
 };
 
