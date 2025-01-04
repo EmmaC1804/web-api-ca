@@ -41,7 +41,6 @@ const SiteHeader = ({ history }) => {
     { label: "New", path: "/tv/current" },
     { label: "Top Rated", path: "/tv/top_rated" },
     { label: "Popular", path: "/tv/popular" },
-    { label: "Login", path: "/login" },
   ]
 
   const handleMenuSelect = (pageURL) => {
@@ -126,7 +125,7 @@ const SiteHeader = ({ history }) => {
               </Button>
             ))}
           </>
-          <Button
+          <Button onClick={() => navigate("/login")}
             sx={{
               color: "rgb(255,255,255)",
             }}
@@ -136,20 +135,6 @@ const SiteHeader = ({ history }) => {
         </Toolbar>
       </AppBar>
       <Offset />
-      {/* Authentication Section */}
-      <div style={{ margin: "20px", textAlign: "center" }}>
-        {context.isAuthenticated ? (
-          <p>
-            Welcome {context.userName}!{" "}
-            <button onClick={() => context.signout()}>Sign out</button>
-          </p>
-        ) : (
-          <p>
-            You are not logged in{" "}
-            <button onClick={() => navigate("/login")}>Login</button>
-          </p>
-        )}
-      </div>
     </>
   );
 };  

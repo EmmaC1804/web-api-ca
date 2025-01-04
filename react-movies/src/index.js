@@ -23,6 +23,7 @@ import NowPlayingPage from "./pages/nowPlayingPage";
 import LoginPage from "./pages/loginPage";
 import AuthContextProvider from "./contexts/authContext";
 import ProtectedRoutes from "./protectedRoutes";
+import SignUpPage from "./pages/signUpPage";
 
 
 const queryClient = new QueryClient({
@@ -43,23 +44,26 @@ const App = () => {
         <SiteHeader />
         <MoviesContextProvider>
         <Routes>
-          <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
-          <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
-          <Route path="/movies/trending/today" element={<TrendingPage/>} />
-          <Route path="/movies/top_rated" element={<TopRatedPage/>} />
-          <Route path="/movies/must_watch" element={<MustWatchPage/>} />
-          <Route path="/movies/now_playing" element={<NowPlayingPage/>} />
           <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
           <Route path="/movies/:id" element={<MoviePage />} />
           <Route path="/actors/:id" element={<ActorPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={ <Navigate to="/" /> } />
           <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
-          <Route path="/movies/popular" element={<PopularMoviesPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route element={<ProtectedRoutes />}>
+          <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
+          <Route path="/movies/must_watch" element={<MustWatchPage/>} />
+          <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
+          <Route path="/movies/trending/today" element={<TrendingPage/>} />
+          <Route path="/movies/top_rated" element={<TopRatedPage/>} />
+          <Route path="/movies/now_playing" element={<NowPlayingPage/>} />
           <Route path="/tv/popular" element={<PopularShowsPage />} />
           <Route path="/tv/current" element={<CurrentShowsPage />} />
           <Route path="/tv/top_rated" element={<TopRatedShowsPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/movies/popular" element={<PopularMoviesPage />} />
+            </Route>
+          <Route path="/signup" element={ <SignUpPage /> } />
         </Routes>
         </MoviesContextProvider>
         </AuthContextProvider>

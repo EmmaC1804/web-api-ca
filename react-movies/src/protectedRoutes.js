@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from './contexts/authContext'
+import { Typography } from "@mui/material";
 
 const ProtectedRoutes = () => {
 
@@ -10,7 +11,7 @@ const ProtectedRoutes = () => {
   return context.isAuthenticated === true ? (
     <Outlet /> 
   ) : (
-    <Navigate to='/login' replace state={{ from: location }}/>
+    <Typography variant="h5">Login to access page content</Typography>
   );
 };
 
