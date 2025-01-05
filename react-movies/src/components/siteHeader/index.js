@@ -125,7 +125,14 @@ const SiteHeader = ({ history }) => {
               </Button>
             ))}
           </>
-          <Button onClick={() => navigate("/login")}
+          <Button onClick={() => {
+            if(context.isAuthenticated) {
+              context.signout();
+            }
+            else{
+              navigate("/login");
+            }
+           } }
             sx={{
               color: "rgb(255,255,255)",
             }}

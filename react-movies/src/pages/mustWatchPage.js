@@ -7,9 +7,11 @@ import Spinner from '../components/spinner';
 import RemoveFromPlaylist from "../components/cardIcons/removeFromPlaylist";
 //import RemoveFromFavorites from "../components/cardIcons/removeFromFavorites";
 import WriteReview from "../components/cardIcons/writeReview";
+import { AuthContext } from "../contexts/authContext";
 
 const MustWatchMoviesPage = () => {
   const {mustWatch: movieIds } = useContext(MoviesContext);
+  const context = useContext(AuthContext);
 
   // Create an array of queries and run in parallel.
   const mustWatchMovieQueries = useQueries(
@@ -36,7 +38,7 @@ const MustWatchMoviesPage = () => {
 
   return (
     <PageTemplate
-      title="Must Watch Movies"
+      title=  {`${context.userName}'s Must Watch Movies`}
       movies={movies}
       action={(movie) => {
         return (

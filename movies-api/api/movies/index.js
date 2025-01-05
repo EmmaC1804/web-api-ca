@@ -9,6 +9,14 @@ import {
     getGenres
   }from '../tmdb-api';
 
+  import {
+     getTrendingMovies
+  } from '../tmdb-api';
+
+  import { getTopRatedMovies } from '../tmdb-api';
+  import { getPopularMovies } from '../tmdb-api';
+  import { getNowPlayingMovies } from '../tmdb-api';
+
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
@@ -51,6 +59,26 @@ router.get('/tmdb/upcoming', asyncHandler(async (req, res) => {
 router.get('/tmdb/genres', asyncHandler(async (req, res) => {
     const genres = await getGenres();
     res.status(200).json(genres);
+}));
+
+router.get('/tmdb/trending', asyncHandler(async (req, res) => {
+    const trending = await getTrendingMovies();
+    res.status(200).json(trending);
+}));
+
+router.get('/tmdb/top_rated', asyncHandler(async (req, res) => {
+    const top_rated = await getTopRatedMovies();
+    res.status(200).json(top_rated);
+}));
+
+router.get('/tmdb/now_playing', asyncHandler(async (req, res) => {
+    const now_playing = await getNowPlayingMovies();
+    res.status(200).json(now_playing);
+}));
+
+router.get('/tmdb/popular', asyncHandler(async (req, res) => {
+    const popular = await getPopularMovies();
+    res.status(200).json(popular);
 }));
 
 export default router;

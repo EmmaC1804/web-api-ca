@@ -1,6 +1,6 @@
 # Assignment 2 - Web API.
 
-Name: Your Name
+Name: Emma Clarke
 
 ## Features.
 
@@ -12,8 +12,7 @@ A bullet-point list of the ADDITIONAL features you have implemented in the API *
  + etc
 
 ## Setup requirements.
-
-[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
+No non startdard setup steps necessary
 
 ## API Configuration
 
@@ -38,8 +37,6 @@ Give an overview of your web API design, perhaps similar to the following:
 - /api/movies/{movieid}/reviews | GET | Get all reviews for movie 
 - /api/movies/{movieid}/reviews | POST | Create a new review for Movie 
 
-If you have your API design on an online platform or graphic, please link to it (e.g. [Swaggerhub](https://app.swaggerhub.com/)).
-
 ## Security and Authentication
 
 Give details of authentication/security implemented on the API (e.g. passport/sessions). Indicate which routes are protected.
@@ -47,7 +44,3 @@ Give details of authentication/security implemented on the API (e.g. passport/se
 ## Integrating with React App
 
 Describe how you integrated your React app with the API. List the views that use your Web API instead of the TMDB API. Describe any other updates to the React app from Assignment One.
-
-## Independent learning (if relevant)
-
-Briefly explain any non-standard features developed for the app.   

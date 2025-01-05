@@ -40,4 +40,48 @@ export const getMovies = async () => {
       }
       )
       return response.json();
-  }
+  };
+
+  export const getTrendingMovies = async() =>{
+    const response = await fetch(
+        'http://localhost:8080/api/movies/tmdb/trending', {
+        headers: {
+          'Authorization': window.localStorage.getItem('token')
+        }
+      }
+      )
+      return response.json();
+  };
+
+  export const getTopRatedMovies = async() =>{
+    const response = await fetch(
+        'http://localhost:8080/api/movies/tmdb/top_rated', {
+        headers: {
+          'Authorization': window.localStorage.getItem('token')
+        }
+      }
+      )
+      return response.json();
+  };
+
+  export const getNowPlayingMovies = async() =>{
+    const response = await fetch(
+        'http://localhost:8080/api/movies/tmdb/now_playing', {
+        headers: {
+          'Authorization': window.localStorage.getItem('token')
+        }
+      }
+      )
+      return response.json();
+  };
+
+  export const getPopularMovies = async() =>{
+    const response = await fetch(
+        'http://localhost:8080/api/movies/tmdb/popular', {
+        headers: {
+          'Authorization': window.localStorage.getItem('token')
+        }
+      }
+      )
+      return response.json();
+  };
