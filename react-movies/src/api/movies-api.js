@@ -85,3 +85,59 @@ export const getMovies = async () => {
       )
       return response.json();
   };
+
+  export const getHomeMovies = async() =>{
+    const response = await fetch(
+        'http://localhost:8080/api/movies/tmdb/discover', {
+        headers: {
+          'Authorization': window.localStorage.getItem('token')
+        }
+      }
+      )
+      return response.json();
+  };
+
+  export const getSimilarMovies = async() =>{
+    const response = await fetch(
+        'http://localhost:8080/api/movies/tmdb/similar', {
+        headers: {
+          'Authorization': window.localStorage.getItem('token')
+        }
+      }
+      )
+      return response.json();
+  };
+
+  export const getMovie = async() =>{
+    const response = await fetch(
+        'http://localhost:8080/api/movies/tmdb/movie', {
+        headers: {
+          'Authorization': window.localStorage.getItem('token')
+        }
+      }
+      )
+      return response.json();
+  };
+
+  export const getMovieReviews = async() =>{
+    const response = await fetch(
+        'http://localhost:8080/api/movies/tmdb/reviews', {
+        headers: {
+          'Authorization': window.localStorage.getItem('token')
+        }
+      }
+      )
+      return response.json();
+  };
+
+  export const getMovieImages = async() =>{
+    const response = await fetch(
+        'http://localhost:8080/api/movies/tmdb/images', {
+        headers: {
+          'Authorization': window.localStorage.getItem('token')
+        }
+      }
+      )
+      return response.json();
+  };
+

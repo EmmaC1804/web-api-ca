@@ -1,6 +1,6 @@
 import React from "react";
 //import { getMovies} from "../api/tmdb-api";
-import { getMovies } from "../api/movies-api";
+import { getHomeMovies } from "../api/movies-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -11,7 +11,7 @@ import Button from "@mui/material/Button";
 
 const HomePage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
+  const {  data, error, isLoading, isError }  = useQuery('discover', getHomeMovies)
 
   if (isLoading) {
     return <Spinner />

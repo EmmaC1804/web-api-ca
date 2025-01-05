@@ -1,5 +1,5 @@
 import React from "react";
-import { getShows} from "../api/tmdb-api";
+import { getPopularShows} from "../api/tmdb-api";
 import PageTemplate from '../components/templateShowListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -11,7 +11,7 @@ import Button from "@mui/material/Button";
 const PopularShowsPage = (props) => {
 
     //May have been cause of loading error - both had 'popular' in query
-  const {  data, error, isLoading, isError }  = useQuery('liked', getShows)
+  const {  data, error, isLoading, isError }  = useQuery('liked', getPopularShows)
 
   if (isLoading) {
     return <Spinner />
